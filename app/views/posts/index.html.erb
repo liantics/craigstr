@@ -19,3 +19,10 @@ All your posts are belong to us
     <%= form.submit  %>
   </div>
 <% end %>
+
+<h2>Locations</h2>
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.post %></li>
+  <%end%>
+</ul>
