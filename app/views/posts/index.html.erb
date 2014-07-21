@@ -3,12 +3,19 @@
 
 All your posts are belong to us
 
-  <h2>Add a Post</h2>
-  <% form_for @posts do |form| %>
-    <% form.label :title %>
-    <% form.text_field :title %>
-    <% form.label :body %>
-    <% form.text_area :body %>
-    <% form.submit “Save Post” %>
-  <% end %>
+<h2>Add a Post</h2>
 
+<%= form_for @post do |form| %>
+  <%= render "error_messages", target: @post %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <div>
+    <%= form.submit  %>
+  </div>
+<% end %>

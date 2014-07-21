@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
-  resources :posts, only: [:index]
+
+  resources :posts, only: [:index, :create]
   resources :locations, only: [:new, :create, :index]
 
   get "/sign_in", to: "sessions#new"
