@@ -5,7 +5,6 @@ All your posts are belong to us.
 
 <% if signed_in? %>
   <h2>Add a Post</h2>
-
   <%= form_for @post do |form| %>
     <%= render "error_messages", target: @post %>
     <div>

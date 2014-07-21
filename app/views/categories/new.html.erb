@@ -1,0 +1,11 @@
+<h2>Create a new category</h2>
+
+<%= form_for :category do | form | %>
+  <div>
+    <%= form.label :name, "Category Name" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.submit :submit %>
+  </div>
+<% end %>
