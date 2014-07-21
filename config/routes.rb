@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :spam, only: [:create]
   end
   resources :locations, only: [:new, :create, :index, :show]
+  resources :categories, only: [:new, :create, :index]
 
   get "/sign_in", to: "sessions#new"
   get "/sign_up", to: "users#new"
