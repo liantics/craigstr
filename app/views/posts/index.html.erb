@@ -1,3 +1,13 @@
 <h2> Posts </h2>
 
 All your posts are belong to us
+
+  <h2>Add a Post</h2>
+  <% form_for @posts do |form| %>
+    <% form.label :title %>
+    <% form.text_field :title %>
+    <% form.label :body %>
+    <% form.text_area :body %>
+    <% form.submit “Save Post” %>
+  <% end %>
+
