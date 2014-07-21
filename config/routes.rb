@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :posts, only: [:index]
 
-  root to: "posts#index"
+  root to: "sessions#new"
+  get "/sign_in", to: "sessions#new"
+  get "/sign_up", to: "users#new"
 end

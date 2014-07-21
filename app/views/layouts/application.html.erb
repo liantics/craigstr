@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if signed_in? %>
+  You are signed in as <%= current_user.email %> <%= link_to "Sign out", :session, method: :delete %>
+<% elsif %>
+  <%= link_to "Create new account", sign_up_path %>
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
 <%= yield %>
 
 </body>
