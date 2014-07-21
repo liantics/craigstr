@@ -5,9 +5,13 @@ class LocationsController < ApplicationController
   end
 
   def create
-    location = Location.create(location_params)
-    location.save
-    redirect_to :locations
+    @locations = Location.all
+    @location = Location.new(location_params)
+    if @location.save
+      redirect_to :locations
+    else
+      render :index
+    end
   end
 
   def location_params

@@ -2,6 +2,7 @@
 
 <h3>Add a location</h3>
 <%= form_for @location do |form| %>
+  <%= render "error_messages", target: @location %>
   <div>
     <%= form.label :location %>
     <%= form.text_field :location %>
