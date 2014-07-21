@@ -1,9 +1,22 @@
 class CategoriesController < ApplicationController
-  def show
+  def index
+    @categories = Category.all
 
   end
+  def create
+    @category = Category.new(category_params)
+    if @category.save
+      redirect_to :categories
+    else
+      render :index
+    end
+  end
 
-  def new
+  private
 
+  def category_params
+    params.require(:category).permit(
+      :name,
+    )
   end
 end
