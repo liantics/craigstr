@@ -7,6 +7,7 @@ class LocationsController < ApplicationController
   def create
     @locations = Location.all
     @location = Location.new(location_params)
+
     if @location.save
       redirect_to :locations
     else
