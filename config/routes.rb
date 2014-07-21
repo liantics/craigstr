@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   root to: "sessions#new"
   get "/sign_in", to: "sessions#new"
-  get "/sign_up", to: "user#new"
+  get "/sign_up", to: "users#new"
 end
