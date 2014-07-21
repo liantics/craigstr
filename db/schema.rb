@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20140721180545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "locations", force: true do |t|
+    t.string   "location",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "locations", ["location"], name: "index_locations_on_location", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                           null: false
     t.string   "password_digest",                 null: false
