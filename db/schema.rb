@@ -25,14 +25,17 @@ ActiveRecord::Schema.define(version: 20140722140836) do
   add_index "locations", ["name"], name: "index_locations_on_name", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "body",                       null: false
-    t.string   "title",                      null: false
-    t.integer  "user_id",                    null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "spam",       default: false
+    t.string   "body",                                                null: false
+    t.string   "title",                                               null: false
+    t.integer  "user_id",                                             null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.integer  "location_id",                                         null: false
+    t.decimal  "price",       precision: 7, scale: 2, default: 0.0,   null: false
+    t.boolean  "spam",                                default: false
   end
 
+  add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new 
+    @locations = Location.all
   end
 
   def create
@@ -11,6 +12,7 @@ class PostsController < ApplicationController
       redirect_to :posts
     else 
       @posts = Post.all
+      @locations = Location.all
       render :index
     end
   end
@@ -21,6 +23,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :title,
       :body,
+      :price,
+      :location,
     )
   end
 end

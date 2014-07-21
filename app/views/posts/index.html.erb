@@ -16,7 +16,16 @@ All your posts are belong to us
     <%= form.text_area :body %>
   </div>
   <div>
-    <%= form.submit  %>
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.collection_select :post, :location_id, @locations, :id, :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.submit %>
   </div>
 <% end %>
 
