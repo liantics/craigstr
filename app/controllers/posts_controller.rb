@@ -2,15 +2,17 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new 
+    @locations = Location.all
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
 
     if @post.save
       redirect_to :posts
     else 
       @posts = Post.all
+      @locations = Location.all
       render :index
     end
   end
@@ -21,6 +23,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :title,
       :body,
+      :price,
+      :location_id,
     )
   end
 end
