@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20140722142312) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
   create_table "locations", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
