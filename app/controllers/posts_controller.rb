@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+ 
     if @post.save
       redirect_to :posts
     else 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :price,
-      :location,
-    )
+      :location_id,
+    ).merge(user_id: current_user.id)
   end
 end

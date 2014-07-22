@@ -2,33 +2,33 @@
 <h2> Posts </h2>
 
 All your posts are belong to us
+<% if signed_in? %>
+  <h2>Add a Post</h2>
 
-<h2>Add a Post</h2>
-
-<%= form_for @post do |form| %>
-  <%= render "error_messages", target: @post %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-  <div>
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-  <div>
-    <%= form.label :location %>
-    <%= form.collection_select :post, :location_id, @locations, :id, :location %>
-    <%= form.text_field :location %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form_for @post do |form| %>
+    <%= render "error_messages", target: @post %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+    </div>
+    <div>
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+    <div>
+      <%= form.label :location %>
+      <%= collection_select :post, :location_id, @locations, :id, :location %>
+      <!-- < % = form.text_field :location % > -->
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
-
 <h2>All Posts</h2>
 <ul>
   <% @posts.each do |post| %>
