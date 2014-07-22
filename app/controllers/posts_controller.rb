@@ -19,7 +19,8 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.mark_as_spam
+    post.update(post_params)
+    post.save
     redirect_to :posts
   end
 
@@ -37,6 +38,7 @@ class PostsController < ApplicationController
       :body,
       :price,
       :location_id,
+      :spam,
     )
   end
 end

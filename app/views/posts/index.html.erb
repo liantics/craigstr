@@ -36,7 +36,9 @@ All your posts are belong to us.
     <li>
       <%= post.title %>
       <%= form_for post do |form| %>
-        <%= form.submit "Mark as Spam" %>
+        <%= form.label :spam, "Check the box if you suspect the post is spam" %>
+        <%= form.check_box :spam %>
+        <%= form.submit "Submit Span Complaint" %>
       <% end %>
     </li>
   <%end%>
