@@ -1,9 +1,4 @@
 class CategoriesController < ApplicationController
-  def index
-    @categories = Category.all
-
-  end
-
   def new
     @category = Category.new
   end
@@ -13,7 +8,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to :posts
     else
-      render :index
+      render :new
     end
   end
 
