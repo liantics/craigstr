@@ -1,18 +1,18 @@
 <h2>Locations</h2>
-
-<h3>Add a location</h3>
-<%= form_for @location do |form| %>
-  <%= render "error_messages", target: @location %>
-  <div>
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-  <div>
-    <%= form.submit "Add Location" %>
-  </div>
+<% if current_user.admin %>
+  <h3>Add a location</h3>
+  <%= form_for @location do |form| %>
+    <%= render "error_messages", target: @location %>
+    <div>
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+    <div>
+      <%= form.submit "Add Location" %>
+    </div>
+  <% end %>
 <% end %>
 
-<h2>Locations</h2>
 <ul>
   <% @locations.each do |location| %>
     <li><%= location.location %></li>
