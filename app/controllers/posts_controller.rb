@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
 
     if @post.save
       redirect_to :posts
@@ -25,6 +25,6 @@ class PostsController < ApplicationController
       :body,
       :price,
       :location_id,
-    ).merge(user_id: current_user.id)
+    )
   end
 end
