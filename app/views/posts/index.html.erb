@@ -35,11 +35,7 @@ All your posts are belong to us.
   <% @posts.each do |post| %>
     <li>
       <%= post.title %>
-      <%= form_for post do |form| %>
-        <%= form.label :spam, "Check the box if you suspect the post is spam" %>
-        <%= form.check_box :spam %>
-        <%= form.submit "Submit Spam Complaint" %>
-      <% end %>
+      <%= button_to "Mark as Spam", [post, :spam], method: :create %>
     </li>
   <%end%>
 <% if current_user.admin? %>
@@ -48,7 +44,7 @@ All your posts are belong to us.
   <% @spam.each do |spam| %>
     <li> 
       <%= spam.title %>
-      <%= button_to "Delete this Spam", spam, method: :delete %>
+      <%= button_to "Delete this Spam", spam %>
     </li>
   <% end %>
   </ul>
