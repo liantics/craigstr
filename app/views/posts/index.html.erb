@@ -22,7 +22,7 @@ All your posts are belong to us.
     </div>
     <div>
       <%= form.label :location %>
-      <%= collection_select :post, :location_id, @locations, :id, :location %>
+      <%= form.collection_select :location_id, @locations, :id, :location %>
     </div>
     <div>
       <%= form.submit %>
