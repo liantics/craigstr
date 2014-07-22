@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20140722142312) do
   add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "post_category_relations", force: true do |t|
+    t.integer  "post_id",     null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "post_category_relations", ["post_id", "category_id"], name: "index_post_category_relations_on_post_id_and_category_id", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                           null: false
     t.string   "password_digest",                 null: false
