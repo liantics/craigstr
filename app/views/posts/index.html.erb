@@ -36,7 +36,7 @@ All your posts belong to us
   <h2>My Posts</h2>
   <ul>
     <% @user_posts.each do |post| %>
-      <li><%= post.title %> <%= link_to "Edit Post", [:edit, post] %></li>
+      <li><%= link_to post.title, post %> <%= link_to "Edit Post", [:edit, post] %></li>
     <% end %>
   </ul>
 <% end %>

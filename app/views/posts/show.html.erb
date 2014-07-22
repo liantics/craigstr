@@ -8,3 +8,6 @@
 <div>
   <%= @post.location.name %> 
 </div>
+<% if signed_in? %>
+  <%= link_to "Edit Post", [:edit, @post] %>
+<% end %>
