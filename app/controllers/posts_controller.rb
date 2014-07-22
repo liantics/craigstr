@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @spam = Post.where(spam: true)
     @post = Post.new 
     @locations = Location.all
   end
@@ -20,13 +21,15 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.update(post_params)
-    post.save
     redirect_to :posts
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    if current_user.admin?
+      post = Post.find(params[:id])
+      post.destroy
+    end
+    
     redirect_to :posts
   end
 
@@ -37,7 +40,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :price,
-      :location_id,
+   a   :location_id,
       :spam,
     )
   end

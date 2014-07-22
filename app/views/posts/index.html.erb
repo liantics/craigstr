@@ -42,10 +42,10 @@ All your posts are belong to us.
       <% end %>
     </li>
   <%end%>
-<% if current_user.admin %>
+<% if current_user.admin? %>
   <h3> Spam </h3>
   </ul>
-  <% @posts.where(spam: true).each do |spam| %>
+  <% @spam.each do |spam| %>
     <li> 
       <%= spam.title %>
       <%= button_to "Delete this Spam", spam, method: :delete %>

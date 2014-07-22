@@ -8,9 +8,4 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
 
-  def mark_as_spam
-    self.assign_attributes(spam: true)
-    self.save
-  end
-
 end
