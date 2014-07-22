@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @locations = Location.all
     @categories = Category.all
+    @user_posts = current_user.posts
   end
 
   def create
@@ -21,8 +22,15 @@ class PostsController < ApplicationController
   end
 
   def update
-  end
+    @post = current_user.posts.find(params[:id])
 
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render :edit
+    end
+  end
+  
   def destroy
     if current_user.admin?
       post = Post.find(params[:id])
@@ -30,6 +38,15 @@ class PostsController < ApplicationController
     end
 
     redirect_to :posts
+  end
+
+  def show
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
+    @locations = Location.all
   end
 
   private
