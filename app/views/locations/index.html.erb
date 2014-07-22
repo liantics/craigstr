@@ -15,6 +15,6 @@
 
 <ul>
   <% @locations.each do |location| %>
-    <li><%= location.location %></li>
+    <li><%= link_to location.location, location %></li>
   <% end %>
 </ul>
