@@ -12,6 +12,9 @@ class Post < ActiveRecord::Base
     order("created_at DESC")
   end
 
-  has_many :category_tags
-  has_many :categories, through: :category_tags
+  has_many :post_categories
+  has_many :categories, through: :post_categories
+
+  has_many :post_categories
+  has_many :categories, through: :post_categories
 end
