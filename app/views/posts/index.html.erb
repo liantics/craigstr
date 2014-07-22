@@ -1,7 +1,8 @@
 <h2><%= link_to "Locations", :locations %></h2>
 <h2> Posts </h2>
 
-All your posts are belong to us
+All your posts are belong to us.
+
 <% if signed_in? %>
   <h2>Add a Post</h2>
 
@@ -22,13 +23,13 @@ All your posts are belong to us
     <div>
       <%= form.label :location %>
       <%= collection_select :post, :location_id, @locations, :id, :location %>
-      <!-- < % = form.text_field :location % > -->
     </div>
     <div>
       <%= form.submit %>
     </div>
   <% end %>
 <% end %>
+
 <h2>All Posts</h2>
 <ul>
   <% @posts.each do |post| %>

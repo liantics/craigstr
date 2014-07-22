@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
   validates :price, presence: true
 
   belongs_to :user
-  belongs_to :location 
+  belongs_to :location
 end
