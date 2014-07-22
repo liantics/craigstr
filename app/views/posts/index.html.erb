@@ -22,7 +22,7 @@ All your posts are belong to us.
     </div>
     <div>
       <%= form.label :location %>
-      <%= form.collection_select :location_id, @locations, :id, :location %>
+      <%= form.collection_select :location_id, @locations, :id, :name %>
     </div>
     <div>
       <%= form.submit %>
@@ -33,6 +33,21 @@ All your posts are belong to us.
 <h2>All Posts</h2>
 <ul>
   <% @posts.each do |post| %>
-    <li><%= post.title %></li>
+    <li>
+      <%= post.title %>
+      <%= form_for post do |form| %>
+        <%= form.submit "Mark as Spam" %>
+      <% end %>
+    </li>
   <%end%>
-</ul>
+<% if current_user.admin %>
+  <h3> Spam </h3>
+  </ul>
+  <% @posts.where(spam: true).each do |spam| %>
+    <li> 
+      <%= spam.title %>
+      <%= button_to "Delete this Spam", spam, method: :delete %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

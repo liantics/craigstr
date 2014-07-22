@@ -17,6 +17,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    post = Post.find(params[:id])
+    post.mark_as_spam
+    redirect_to :posts
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to :posts
+  end
+
   private
 
   def post_params
