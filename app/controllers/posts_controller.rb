@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @spam = Post.where(spam: true)
     @post = Post.new 
     @locations = Location.all
+    @categories = Category.all
   end
 
   def create

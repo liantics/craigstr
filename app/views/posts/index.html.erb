@@ -2,11 +2,15 @@
 <h2> Posts </h2>
 
 All your posts are belong to us.
-
 <% if signed_in? %>
   <h2>Add a Post</h2>
   <%= form_for @post do |form| %>
     <%= render "error_messages", target: @post %>
+    <div>
+      <p>Assign your post to a category</p>
+      <%= form.collection_select :id, @categories, :id, :name %>
+      <p>Don't see a category you like? <%= link_to "Create category", new_category_path %></p>
+    <div>
     <div>
       <%= form.label :title %>
       <%= form.text_field :title %>
