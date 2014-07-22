@@ -9,8 +9,10 @@ All your posts are belong to us.
     <div>
       <p>Assign your post to a category</p>
       <%= form.collection_select :id, @categories, :id, :name %>
-      <p>Don't see a category you like? <%= link_to "Create category", new_category_path %></p>
-    <div>
+      <% if current_user.admin %>
+        <p>Don't see a category you like? <%= link_to "Create category", new_category_path %></p>
+      <% end %>
+    </div>
     <div>
       <%= form.label :title %>
       <%= form.text_field :title %>
@@ -31,6 +33,7 @@ All your posts are belong to us.
       <%= form.submit %>
     </div>
   <% end %>
+<% end %>
 
 <h2>All Posts</h2>
 <%= paginate @posts %>
