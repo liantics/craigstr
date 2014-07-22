@@ -11,4 +11,7 @@ class Post < ActiveRecord::Base
   def self.order_by_time
     order("created_at DESC")
   end
+
+  has_many :category_tags
+  has_many :categories, through: :category_tags
 end
