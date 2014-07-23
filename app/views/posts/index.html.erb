@@ -36,7 +36,6 @@ All your posts belong to us
   <h2>My Posts</h2>
     You're logged in as: <%= current_user.email %>
   <ul>
-    <% current_user.posts.each do |post| %>
       <li><%= link_to post.title, post %> <%= link_to "Edit Post", [:edit, post] %></li>
     <% end %>
   </ul>

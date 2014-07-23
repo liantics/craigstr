@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 20140722142312) do
     t.integer  "user_id",                                             null: false
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
-    t.boolean  "spam",                                default: false
     t.integer  "location_id",                                         null: false
     t.decimal  "price",       precision: 7, scale: 2, default: 0.0,   null: false
+    t.boolean  "spam",                                default: false
   end
 
   add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
