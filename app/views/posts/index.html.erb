@@ -36,7 +36,9 @@ All your posts are belong to us.
     <li>
       <%= post.title %>
       <% if signed_in? %>
-        <%= render "report_spam_button", target:  post %>
+        <% if ! post.spam? %>
+          <%= render "report_spam_button", target:  post %>
+        <% end %>
       <% end %>
     </li>
   <%end%>
