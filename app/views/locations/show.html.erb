@@ -1,1 +1,12 @@
+<div><%= link_to "Locations", :locations %></div>
 <h2> Catagories in <%= @location.name %> </h2>
+  <% if current_user.admin? %>
+    <div> <%= link_to "Create category", [:new, @location, :category] %></div>
+  <% end %>
+
+  <ul>
+  <% @location.categories.each do |category| %>
+    <li>
+      <%= category.name %>
+    </li>
+  <% end %>
