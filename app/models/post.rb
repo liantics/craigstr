@@ -7,4 +7,14 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :location
+
+  def self.order_by_time
+    order("created_at DESC")
+  end
+
+  has_many :post_categories
+  has_many :categories, through: :post_categories
+
+  has_many :post_categories
+  has_many :categories, through: :post_categories
 end

@@ -1,7 +1,10 @@
 #Craigster!
 
-Craigslist clone. 
+###Craigslist clone...created as a group project at Metis
+
 Team: Chris Thorsen, Andrew Slawter, Liane Allen
+
+Created: 7/21/14 -- 7/26/14
 
 ## Features
 
