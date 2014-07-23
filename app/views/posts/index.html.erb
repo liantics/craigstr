@@ -35,7 +35,9 @@ All your posts are belong to us.
   <% @posts.each do |post| %>
     <li>
       <%= post.title %>
-      <%= button_to "Mark as Spam", [post, :spam], method: :create %>
+      <% if signed_in? %>
+        <%= button_to "Mark as Spam", [post, :spam], method: :create %>
+      <% end %>
     </li>
   <%end%>
 <% if current_user.admin? %>
@@ -44,8 +46,8 @@ All your posts are belong to us.
   <% @spam.each do |spam| %>
     <li> 
       <%= spam.title %>
-      <%= button_to "Delete this Spam", spam %>
+      <%= button_to "Delete this Spam", spam, method: :delete %>
     </li>
-  <% end %>
+  <% end  %>
   </ul>
 <% end %>
