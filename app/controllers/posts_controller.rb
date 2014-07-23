@@ -21,12 +21,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params.merge(location_id: @location.id))
 
     if @post.save
-      redirect_to :posts
+      redirect_to @location
     else
       @categories = Category.all
       @posts = Post.all
       @locations = Location.all
-      render :index
+      render "locations/show"
     end
   end
 
