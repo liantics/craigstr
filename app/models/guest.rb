@@ -8,10 +8,10 @@ class Guest
   end
 
   def posts
-    []
+    Post.none
   end
 
   def id
-    false
+    -1
   end
 end
