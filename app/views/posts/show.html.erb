@@ -9,8 +9,8 @@
   <%= @post.location.name %> 
 </div>
 <div>
-  <% if current_user.admin? %>
-    <%= button_to "Delete Post", :post, method: :delete %>
+  <% if current_user.admin?
+    <%=button_to "Delete Post", :post, method: :delete %>
   <% end %>
 
 <% if @post.user_id == @user.id %>
