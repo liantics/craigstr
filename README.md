@@ -1,6 +1,6 @@
 #Craigster!
 
-Craigslist clone...created as a group project at Metis
+###Craigslist clone...created as a group project at Metis
 
 Team: Chris Thorsen, Andrew Slawter, Liane Allen
 
