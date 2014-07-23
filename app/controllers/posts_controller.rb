@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
-  before_action :ensure_user_can_modify_post, only: [:edit, :update]
+  before_action :ensure_user_can_modify_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
   def ensure_user_can_modify_post
      post = Post.find(params[:id])
-    if post.user_id != current_user.id
+     unless current_user.can_modify?(post)
       redirect_to :posts
     end
   end
