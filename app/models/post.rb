@@ -8,5 +8,4 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
 
-  paginates_per 10
 end
