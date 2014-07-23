@@ -7,7 +7,7 @@ All your posts belong to us
     <%= render "error_messages", target: @post %>
     <div>
       <p>Assign your post to a category</p>
-      <%= form.collection_check_boxes :id, @categories, :id, :name %>
+      <%= form.collection_check_boxes(:category_ids, @categories, :id, :name) %>
       <% if current_user.admin? %>
         <p>Don't see a category you like? <%= link_to "Create category", new_category_path %></p>
       <% end %>

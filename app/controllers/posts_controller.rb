@@ -8,11 +8,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params.merge(user_id: current_user.id))
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to :posts
     else 
+      @categories = Category.all
       @posts = Post.all
       @locations = Location.all
       render :index
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
       :body,
       :price,
       :location_id,
+      category_ids: [],
     )
   end
 end
