@@ -9,5 +9,7 @@
   <%= @post.location.name %> 
 </div>
 <div>
+<% if @post.user_id == @user.id %>
   <%= link_to "Edit Post", [:edit, @post] %>
+<% end %>
 </div>

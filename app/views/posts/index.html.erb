@@ -43,11 +43,12 @@ All your posts belong to us
 <% end %>
 
 <h2>All Posts</h2>
+
 <%= paginate @posts %>
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <%= link_to post.title, post %>
+    <%= link_to post.title, post %>
       <% if signed_in? %>
         <% if ! post.spam? %>
           <%= render "report_spam_button", post:  post %>

@@ -6,4 +6,12 @@ class Guest
   def logged_in?
     false
   end
+
+  def posts
+    []
+  end
+
+  def id
+    false
+  end
 end

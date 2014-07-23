@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
+  before_action :ensure_user_can_modify_post, only: [:edit, :update]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
@@ -11,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @post = Post.find(params[:id])
   end
 
@@ -61,5 +63,12 @@ class PostsController < ApplicationController
       :location_id,
       category_ids: [],
     )
+  end
+
+  def ensure_user_can_modify_post
+     post = Post.find(params[:id])
+    if post.user_id != current_user.id
+      redirect_to  :posts
+    end
   end
 end
