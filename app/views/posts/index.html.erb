@@ -37,7 +37,7 @@ All your posts are belong to us.
       <%= post.title %>
       <% if signed_in? %>
         <% if ! post.spam? %>
-          <%= render "report_spam_button", target:  post %>
+          <%= render "report_spam_button", post:  post %>
         <% end %>
       <% end %>
     </li>
@@ -50,6 +50,6 @@ All your posts are belong to us.
       <%= spam.title %>
       <%= button_to "Delete this Spam", spam, method: :delete %>
     </li>
-  <% end  %>
+  <% end %>
   </ul>
 <% end %>
