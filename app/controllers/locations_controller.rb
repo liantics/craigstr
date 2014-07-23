@@ -6,6 +6,8 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @post = Post.new
+    @posts = Post.where(location_id: @location.id)
   end
 
   def create

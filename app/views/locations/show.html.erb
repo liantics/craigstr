@@ -4,9 +4,43 @@
     <div> <%= link_to "Create category", [:new, @location, :category] %></div>
   <% end %>
 
-  <ul>
+<ul>
   <% @location.categories.each do |category| %>
     <li>
       <%= category.name %>
     </li>
   <% end %>
+</ul>
+
+<% if signed_in? %>
+  <h2>Add a Post</h2>
+  <%= form_for [@location, @post] do |form| %>
+    <%= render "error_messages", target: @post %>
+    <div>
+      <p>Assign your post to a category</p>
+      <%= form.collection_check_boxes(:category_ids, @location.categories, :id, :name) %>
+    <div>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+    </div>
+    <div>
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>Posts is <%= @location.name %></h2>
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>

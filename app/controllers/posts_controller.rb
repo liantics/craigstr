@@ -17,7 +17,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @location = Location.find(params[:location_id])
+    @post = current_user.posts.new(post_params.merge(location_id: @location.id))
 
     if @post.save
       redirect_to :posts
@@ -60,7 +61,6 @@ class PostsController < ApplicationController
       :title,
       :body,
       :price,
-      :location_id,
       category_ids: [],
     )
   end
