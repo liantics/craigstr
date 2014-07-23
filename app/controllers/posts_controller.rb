@@ -40,7 +40,7 @@ class PostsController < ApplicationController
       :body,
       :price,
       :location_id,
-      :category_ids,
+      category_ids: [],
     )
   end
 end
