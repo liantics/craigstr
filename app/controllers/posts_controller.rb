@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order("created_at DESC").page(params[:page])
+    @posts = Post.order_by_time.page(params[:page])
     @spam = Post.where(spam: true)
     @post = Post.new 
     @locations = Location.all

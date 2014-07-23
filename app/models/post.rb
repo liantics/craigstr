@@ -8,4 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
 
+  def self.order_by_time
+    order("created_at DESC")
+  end
 end
