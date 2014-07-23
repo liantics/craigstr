@@ -31,6 +31,7 @@ All your posts are belong to us.
 <% end %>
 
 <h2>All Posts</h2>
+<%= paginate @posts %>
 <ul>
   <% @posts.each do |post| %>
     <li>
