@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   def ensure_user_can_modify_post
      post = Post.find(params[:id])
     if post.user_id != current_user.id
-      redirect_to  :posts
+      redirect_to :posts
     end
   end
 end
