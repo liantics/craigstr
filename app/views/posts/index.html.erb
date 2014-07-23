@@ -47,14 +47,13 @@ All your posts belong to us
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <%= post.title %>
+      <%= link_to post.title, post %>
       <% if signed_in? %>
         <% if ! post.spam? %>
           <%= render "report_spam_button", post:  post %>
         <% end %>
       <% end %>
     </li>
-    <li><%= link_to post.title, post %></li>
   <%end%>
 <% if current_user.admin? %>
   <h3> Spam </h3>
