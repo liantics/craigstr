@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: [:create, :edit, :update]
+
   def index
     @posts = Post.order_by_time.page(params[:page])
     @spam = Post.where(spam: true)
@@ -21,6 +23,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
+    @locations = Location.all
+  end
+
   def update
     @post = current_user.posts.find(params[:id])
 
@@ -38,15 +49,6 @@ class PostsController < ApplicationController
     end
 
     redirect_to :posts
-  end
-
-  def show
-    @post = current_user.posts.find(params[:id])
-  end
-
-  def edit
-    @post = current_user.posts.find(params[:id])
-    @locations = Location.all
   end
 
   private

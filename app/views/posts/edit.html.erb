@@ -15,7 +15,7 @@
 
 <% if signed_in? %>
   <h2>Edit  Post</h2>
-
+  
   <%= form_for @post do |form| %>
       <%= render "error_messages", target: @post %>
     <div>
