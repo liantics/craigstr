@@ -36,7 +36,7 @@ All your posts are belong to us.
     <li>
       <%= post.title %>
       <% if signed_in? %>
-        <%= button_to "Mark as Spam", [post, :spam], method: :create %>
+        <%= render "report_spam_button", target:  post %>
       <% end %>
     </li>
   <%end%>
