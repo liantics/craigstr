@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order_by_time.page(params[:page])
     @spam = Post.where(spam: true)
-    @post = Post.new 
+    @post = Post.new
     @locations = Location.all
     @categories = Category.all
   end
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to :posts
-    else 
+    else
       @categories = Category.all
       @posts = Post.all
       @locations = Location.all
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       post = Post.find(params[:id])
       post.destroy
     end
-    
+
     redirect_to :posts
   end
 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
       :body,
       :price,
       :location_id,
-      category_ids: [],
+      :category_ids,
     )
   end
 end
