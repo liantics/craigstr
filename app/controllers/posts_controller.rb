@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :require_login, only: [:create, :edit, :update]
+  before_action :require_login, only: [:create, :edit, :update]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
