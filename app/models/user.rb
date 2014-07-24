@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   private
 
   def post_owner?(post)
-   post.user_id == id
+    post.user_id == id
   end
 end
