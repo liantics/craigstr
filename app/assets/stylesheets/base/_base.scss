@@ -25,10 +25,13 @@
 
 body {
   background-image: image-url("great-outdoors.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .outer-container {
   @include outer-container;
-  background: transparent;
+  background: rgba(0, 0, 57, 0.2);
+  border-radius: 20px;
   padding: 75px;
 }
