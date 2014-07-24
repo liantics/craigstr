@@ -20,7 +20,6 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(
       :name,
       :id,
-      :location_id
     )
   end
 end

@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20140723193116) do
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
-    t.string   "name",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "location_id"
+    t.string   "name",                    null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "location_id", default: 1, null: false
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20140723193116) do
     t.integer  "user_id",                                             null: false
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.boolean  "spam",                                default: false
     t.integer  "location_id",                                         null: false
     t.decimal  "price",       precision: 7, scale: 2, default: 0.0,   null: false
-    t.boolean  "spam",                                default: false
   end
 
   add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
