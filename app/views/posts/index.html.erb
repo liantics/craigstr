@@ -15,15 +15,16 @@ All your posts belong to us
         <% end %>
       <% end %>
     </li>
-  <%end%>
-<% if current_user.admin? %>
-  <h3> Spam </h3>
-  </ul>
-  <% @spam.each do |spam| %>
-    <li> 
-      <%= spam.title %>
-      <%= button_to "Delete this Spam", spam, method: :delete %>
-    </li>
   <% end %>
+
+<% if current_user.admin? %>
+  <h3>Spam</h3>
+  </ul>
+    <% @spam.each do |spam| %>
+      <li> 
+        <%= spam.title %>
+        <%= button_to "Delete this Spam", spam, method: :delete %>
+      </li>
+    <% end %>
   </ul>
 <% end %>

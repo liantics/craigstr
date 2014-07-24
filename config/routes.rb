@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 
-  resources :posts, only: [:index, :update, :destroy] do
+  resources :posts, only: [:show, :edit, :index, :update, :destroy] do
     resource :spam, only: [:create]
   end
 
