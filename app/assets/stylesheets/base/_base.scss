@@ -22,3 +22,14 @@
 @import 'lists';
 @import 'flashes';
 @import 'buttons';
+
+body {
+  background-image: image-url("great-outdoors.jpg");
+}
+
+.outer-container {
+  @include outer-container;
+  background: white;
+  border: 5px solid #FFFF66;
+  padding: 75px;
+}
