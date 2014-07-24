@@ -4,7 +4,17 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
-  def can_modify?(post)
-    admin? || post.user_id == self.id
+  def generate_allowed_posts
+    if admin?
+      Post.all
+    else
+      is_post_owner?(post)
+    end
+  end
+
+  def is_post_owner?(post)
+    if post.user_id == self.id
+      Post.find(self.id)
+    end
   end
 end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
-  before_action :ensure_user_can_modify_post, only: [:edit, :update, :destroy]
+#  before_action :ensure_user_can_modify_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
@@ -29,13 +29,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    #@post = current_user.posts.find(params[:id])
+    @post = generate_allowed_posts
     @locations = Location.all
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-
+    #@post = current_user.posts.find(params[:id])
+    @post = generate_allowed_posts
     if @post.update(post_params)
       redirect_to @post
     else
@@ -63,10 +64,9 @@ class PostsController < ApplicationController
     )
   end
 
-  def ensure_user_can_modify_post
-     post = Post.find(params[:id])
-     unless current_user.can_modify?(post)
-      redirect_to :posts
-    end
-  end
+  #def posts_this_user_can_modify
+     #unless current_user.can_modify?(post)
+   #   redirect_to :posts
+    #end
+ # end
 end
