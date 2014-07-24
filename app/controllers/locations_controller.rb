@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
   def create
     @locations = Location.all
     @location = Location.new(location_params)
-
+    @location.name = @location.name.capitalize
     if @location.save
       redirect_to :locations
     else
