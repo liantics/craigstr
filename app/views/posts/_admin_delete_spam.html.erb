@@ -1,0 +1,10 @@
+<h3>Spam</h3>
+<p>The following posts have been marked by users as spam.  Delete as you see fit.</p>
+</ul>
+  <% @spam.each do |spam| %>
+    <li> 
+      <%= spam.title %>
+      <%= button_to "Delete this Spam", spam, method: :delete %>
+    </li>
+  <% end %>
+</ul>

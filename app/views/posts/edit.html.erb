@@ -32,10 +32,13 @@
     </div>
     <div>
       <%= form.label :location %>
-      <%= form.collection_select :id, @locations, :id, :name%>
+      <%= form.collection_select :id, @locations, :id, :name %>
     </div>
     <div>
       <%= form.submit "Update Post" %>
     </div>
   <% end %>
+  
+  <%= button_to "Delete Post", @post, method: :delete %>
+
 <% end %>

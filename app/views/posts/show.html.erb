@@ -9,11 +9,17 @@
   <%= @post.location.name %> 
 </div>
 <div>
+  <% if signed_in? %>
+    <% if ! @post.spam? %>
+      <%= render "report_spam_button", post: @post %>
+    <% end %>
+  <% end %>
+
   <% if current_user.admin? %>
     <%= button_to "Delete Post", :post, method: :delete %>
   <% end %>
 
-<% if @post.user_id == @user.id %>
-  <%= link_to "Edit Post", [:edit, @post] %>
-<% end %>
+  <% if @post.user_id == @user.id %>
+    <%= button_to "Edit", [:edit, @post], method: :get %>
+  <% end %>
 </div>

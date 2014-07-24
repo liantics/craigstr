@@ -13,6 +13,10 @@ class Post < ActiveRecord::Base
     order("created_at DESC")
   end
 
+  def spam
+    where(spam: true)
+  end
+
   has_many :post_categories
   has_many :categories, through: :post_categories
 

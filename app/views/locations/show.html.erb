@@ -1,9 +1,15 @@
 <div><%= link_to "Locations", :locations %></div>
+
+<h2>Posts in <%= @location.name %></h2>
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.title, post %></li>
+  <% end %>
+</ul>
 <h2> Catagories in <%= @location.name %> </h2>
   <% if current_user.admin? %>
     <div> <%= link_to "Create category", [:new, @location, :category] %></div>
   <% end %>
-
 <ul>
   <% @location.categories.each do |category| %>
     <li>
@@ -11,7 +17,6 @@
     </li>
   <% end %>
 </ul>
-
 <% if signed_in? %>
   <h2>Add a Post</h2>
   <%= form_for [@location, @post] do |form| %>
@@ -37,10 +42,3 @@
     </div>
   <% end %>
 <% end %>
-
-<h2>Posts is <%= @location.name %></h2>
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, post %></li>
-  <% end %>
-</ul>

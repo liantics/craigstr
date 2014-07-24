@@ -1,14 +1,9 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
-  before_action :ensure_user_can_modify_post, only: [:edit, :update]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
     @spam = Post.where(spam: true)
-    @post = Post.new
-    @locations = Location.all
-    @categories = Category.all
-    @user_posts = current_user.posts
   end
 
   def show
@@ -19,7 +14,6 @@ class PostsController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @post = current_user.posts.new(post_params.merge(location_id: @location.id))
-
     if @post.save
       redirect_to @location
     else
@@ -31,27 +25,35 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
-    @locations = Location.all
+    @post = Post.find(params[:id])
+    if current_user.allowed_to_modify_post?(@post)
+      @locations = Location.all
+    else
+      redirect_to :posts
+    end
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-
-    if @post.update(post_params)
-      redirect_to @post
+    @post = Post.find(params[:id])
+    if current_user.allowed_to_modify_post?(@post)
+      if @post.update(post_params)
+        redirect_to @post
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to :posts
     end
   end
-  
-  def destroy
-    if current_user.admin?
-      post = Post.find(params[:id])
-      post.destroy
-    end
 
-    redirect_to :posts
+  def destroy
+    post = Post.find(params[:id])
+    if current_user.allowed_to_modify_post?(post)
+      post.destroy
+      redirect_to :posts
+    else
+      redirect_to :posts
+    end
   end
 
   private
@@ -63,12 +65,5 @@ class PostsController < ApplicationController
       :price,
       category_ids: [],
     )
-  end
-
-  def ensure_user_can_modify_post
-     post = Post.find(params[:id])
-    if post.user_id != current_user.id
-      redirect_to :posts
-    end
   end
 end

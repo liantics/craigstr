@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :locations, only: [:new, :create, :index, :show] do
-    resources :categories, only: [:new, :create, :index, :show]
+    resources :categories, only: [:show, :new, :create, :index]
     resources :posts, only: [:create]
   end
 

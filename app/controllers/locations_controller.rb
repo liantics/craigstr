@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to :index
+      redirect_to :locations
     else
       render :new
     end
