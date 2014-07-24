@@ -14,6 +14,12 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @location = Location.find(params[:location_id])
+    @category = Category.find(params[:id])
+    @posts = @category.posts
+  end
+
   private
 
   def category_params

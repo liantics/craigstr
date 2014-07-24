@@ -1,0 +1,7 @@
+<div><%= link_to "back to the #{ @location.name }  page", @location %>
+<h2> Posts in <%= @location.name %> under the <%= @category.name %> category </h2>
+<ul>
+  <% @posts.each do |post| %>
+    <li> <%= link_to post.title, post %> </li>
+  <% end %>
+</ul>

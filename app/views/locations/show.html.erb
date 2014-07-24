@@ -7,7 +7,7 @@
 <ul>
   <% @location.categories.each do |category| %>
     <li>
-      <%= category.name %>
+      <%= link_to category.name, [@location, category] %>
     </li>
   <% end %>
 </ul>
@@ -41,6 +41,6 @@
 <h2>Posts is <%= @location.name %></h2>
 <ul>
   <% @posts.each do |post| %>
-    <li><%= post.title %></li>
+    <li><%= link_to post.title, post %></li>
   <% end %>
 </ul>

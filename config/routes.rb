@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 
-  resources :posts, only: [:show, :edit, :index, :update, :destroy] do
+  resources :posts, only: [:index, :update, :destroy, :show, :edit] do
     resource :spam, only: [:create]
   end
 
   resources :locations, only: [:new, :create, :index, :show] do
-    resources :categories, only: [:new, :create, :index]
+    resources :categories, only: [:new, :create, :index, :show]
     resources :posts, only: [:create]
   end
 

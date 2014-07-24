@@ -7,14 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if signed_in? %>
-  You are signed in as <%= current_user.email %> <%= link_to "Sign out", :session, method: :delete %>
-<% elsif %>
-  <%= link_to "Create new account", sign_up_path %>
-  <%= link_to "Sign in", sign_in_path %>
-<% end %>
+  <% if signed_in? %>
+    You are signed in as <%= current_user.email %> <%= link_to "Sign out", :session, method: :delete %>
+  <% elsif %>
+    <%= link_to "Create new account", sign_up_path %>
+    <%= link_to "Sign in", sign_in_path %>
+  <% end %>
 
-<h3><%= link_to "All Posts", :posts %></h3>
-<%= yield %>
+  <h1> CRAIGSTR </h1>
+
+  <div class="outer-container">
+    <h3><%= link_to "All Posts", :posts %></h3>
+    <%= yield %>
+  </div> 
 </body>
 </html>
