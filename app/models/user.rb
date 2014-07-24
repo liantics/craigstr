@@ -4,17 +4,13 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
-  def generate_allowed_posts
-    if admin?
-      Post.all
-    else
-      is_post_owner?(post)
-    end
+  def allowed_to_modify_post?(post)
+    admin? || post_owner?(post)
   end
 
-  def is_post_owner?(post)
+  def post_owner?(post)
     if post.user_id == self.id
-      Post.find(self.id)
+      Post.find(post.id)
     end
   end
 end

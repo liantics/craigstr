@@ -19,7 +19,7 @@
     <%= button_to "Delete Post", :post, method: :delete %>
   <% end %>
 
-  <% if @post.user_id == @user.id %>
-    <%= link_to "Edit Post", [:edit, @post] %>
-  <% end %>
+<% if @post.user_id == @user.id %>
+  <%= button_to "Edit", [:edit, @post], method: :get %>
+<% end %>
 </div>

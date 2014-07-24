@@ -1,12 +1,9 @@
 class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
-#  before_action :ensure_user_can_modify_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.order_by_time.page(params[:page])
     @spam = Post.where(spam: true)
-    @locations = Location.all
-    @user_posts = current_user.posts
   end
 
   def show
@@ -29,28 +26,38 @@ class PostsController < ApplicationController
   end
 
   def edit
-    #@post = current_user.posts.find(params[:id])
-    @post = generate_allowed_posts
-    @locations = Location.all
+    @post = Post.find(params[:id])
+
+    if current_user.allowed_to_modify_post?(@post)
+      @locations = Location.all
+    else
+      redirect_to :posts
+    end
   end
 
   def update
-    #@post = current_user.posts.find(params[:id])
-    @post = generate_allowed_posts
-    if @post.update(post_params)
-      redirect_to @post
+    @post = Post.find(params[:id])
+
+    if current_user.allowed_to_modify_post?(@post)
+      if @post.update(post_params)
+        redirect_to @post
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to :posts
     end
   end
-  
-  def destroy
-    if current_user.admin?
-      post = Post.find(params[:id])
-      post.destroy
-    end
 
-    redirect_to :posts
+  def destroy
+    post = Post.find(params[:id])
+
+    if current_user.allowed_to_modify_post?(post)
+      post.destroy
+      redirect_to :posts
+    else
+      redirect_to :posts
+    end
   end
 
   private
@@ -63,10 +70,4 @@ class PostsController < ApplicationController
       category_ids: [],
     )
   end
-
-  #def posts_this_user_can_modify
-     #unless current_user.can_modify?(post)
-   #   redirect_to :posts
-    #end
- # end
 end
