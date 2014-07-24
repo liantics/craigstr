@@ -8,7 +8,7 @@
 </head>
 <body>
   <% if signed_in? %>
-    You are signed in as <%= current_user.email %> <%= link_to "Sign out", :session, method: :delete %>
+    <div class="sign-out">You are signed in as <%= current_user.email %> <%= link_to "Sign out", :session, method: :delete %></div>
   <% elsif %>
     <%= link_to "Create new account", sign_up_path %>
     <%= link_to "Sign in", sign_in_path %>
@@ -18,7 +18,7 @@
 
   <div class="outer-container">
     <div class="side-dashboard">
-      <h2>Dashboard</h2>
+      <h2>Quick Links</h2>
       <% if signed_in? %>
         <div><%= link_to "My Posts", current_user %></div>
       <% end %>
