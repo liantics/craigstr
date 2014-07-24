@@ -6,8 +6,8 @@
     <li>
       <%= link_to location.name, location %>
       <ul>
-        <% location.posts.each do |location_post| %>
-          <li><%= link_to location_post.title, location_post %></li>
+        <% location.categories.each do |location_category| %>
+          <li><%= link_to location_category.name, [location, @category] %></li>
         <% end %>
       </ul>
     </li>
