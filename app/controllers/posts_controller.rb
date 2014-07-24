@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:id])
-    @spam = Post.where(spam: true)
   end
 
   def create
