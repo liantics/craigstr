@@ -9,15 +9,13 @@ body {
 .outer-container {
   background: white;
   padding: 75px;
-  border-color: FFFF66;
-  border-style: solid;
-  border-width: 5px;
-  margin-left: 350px;
-  margin-right: 350px;
+  border: 5px solid #FFFF66;
   @include outer-container;
 }
 h1 {
-  text-align:center;
+  text-align: center;
+  text-shadow: 0.1em 0.1em #333;
+  color: #FFFF66;
   margin: 20px;
   font-size: 4em;
 }
