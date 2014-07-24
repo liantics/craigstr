@@ -1,14 +1,16 @@
 <h2><%= link_to "Locations", :locations %></h2>
-<h2>Posts</h2>
-All your posts belong to us
-
 <h2>All Posts</h2>
 
 <%= paginate @posts %>
 <ul>
-  <% @posts.each do |post| %>
+  <% @locations.each do |location| %>
     <li>
-    <%= link_to post.title, post %>
+      <%= link_to location.name, location %>
+      <ul>
+        <% location.posts.each do |location_post| %>
+          <li><%= link_to location_post.title, location_post %></li>
+        <% end %>
+      </ul>
     </li>
   <% end %>
 
