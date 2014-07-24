@@ -3,7 +3,7 @@
 <h2>Posts in <%= @location.name %></h2>
 <ul>
   <% @posts.each do |post| %>
-    <li><%= link_to "#{post.title}", post %></li>
+    <li><%= link_to post.title, post %></li>
   <% end %>
 </ul>
 <h2> Catagories in <%= @location.name %> </h2>
