@@ -1,0 +1,14 @@
+.main-dashboard {
+  @include span-columns(8);
+
+  background: Azure;
+  border: 4px solid #FFFF66;
+  padding: 40px;
+}
+.side-dashboard {
+  @include span-columns(4);
+
+  background: Azure;
+  border: 4px solid #FFFF66;
+  padding: 20px;
+}

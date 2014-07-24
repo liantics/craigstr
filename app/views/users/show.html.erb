@@ -1,0 +1,6 @@
+<h2 class ="top-page"> My Current Posts </h2>
+<ul>
+  <% @user.posts.each do |post| %>
+    <li> <%= link_to post.title, post %> </li>
+  <% end %>
+</ul>

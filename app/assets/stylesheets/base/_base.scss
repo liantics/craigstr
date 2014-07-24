@@ -29,7 +29,6 @@ body {
 
 .outer-container {
   @include outer-container;
-  background: white;
-  border: 5px solid #FFFF66;
+  background: transparent;
   padding: 75px;
 }

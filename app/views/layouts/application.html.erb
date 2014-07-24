@@ -17,8 +17,17 @@
   <h1> CRAIGSTR </h1>
 
   <div class="outer-container">
-    <h3><%= link_to "All Posts", :posts %></h3>
-    <%= yield %>
+    <div class="side-dashboard">
+      <h2>Dashboard</h2>
+      <% if signed_in? %>
+        <div><%= link_to "My Posts", current_user %></div>
+      <% end %>
+      <div><%= link_to "Locations", :locations %></div>
+      <div><%= link_to "All Posts", :posts %></div>
+    </div>
+    <div class="main-dashboard">
+      <%= yield %>
+    </div>
   </div> 
 </body>
 </html>
