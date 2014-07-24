@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   end
 
   def spam
-    Post.where(spam: true)
+    where(spam: true)
   end
 
   has_many :post_categories
