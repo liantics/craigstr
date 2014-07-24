@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   end
 
   def post_owner?(post)
-    if post.user_id == self.id
+    if post.user_id == id
       Post.find(post.id)
     end
   end

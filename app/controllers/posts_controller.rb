@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @post = current_user.posts.new(post_params.merge(location_id: @location.id))
-
     if @post.save
       redirect_to @location
     else
@@ -27,7 +26,6 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-
     if current_user.allowed_to_modify_post?(@post)
       @locations = Location.all
     else
@@ -37,7 +35,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     if current_user.allowed_to_modify_post?(@post)
       if @post.update(post_params)
         redirect_to @post
@@ -51,7 +48,6 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-
     if current_user.allowed_to_modify_post?(post)
       post.destroy
       redirect_to :posts
