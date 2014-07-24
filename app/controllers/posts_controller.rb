@@ -14,6 +14,8 @@ class PostsController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @post = current_user.posts.new(post_params.merge(location_id: @location.id))
+    @post.title = @post.title.capitalize
+
     if @post.save
       redirect_to @location
     else
