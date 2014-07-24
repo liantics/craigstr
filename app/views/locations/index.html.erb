@@ -1,4 +1,3 @@
-<h2>Locations</h2>
 <% if current_user.admin? %>
   <h3>Add a location</h3>
   <%= form_for @location do |form| %>
@@ -14,7 +13,7 @@
 <% end %>
 
 <ul>
-  <% @locations.each do |location| %>
+  <% @locations.display_format.each do |location| %>
     <li class="location-list">
       <%= link_to location.name, location %>
       <ul>
