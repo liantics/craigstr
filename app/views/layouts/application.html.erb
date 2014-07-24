@@ -13,7 +13,8 @@
   <%= link_to "Create new account", sign_up_path %>
   <%= link_to "Sign in", sign_in_path %>
 <% end %>
-<%= yield %>
 
+<h3><%= link_to "All Posts", :posts %></h3>
+<%= yield %>
 </body>
 </html>
