@@ -9,22 +9,9 @@ All your posts belong to us
   <% @posts.each do |post| %>
     <li>
     <%= link_to post.title, post %>
-      <% if signed_in? %>
-        <% if ! post.spam? %>
-          <%= render "report_spam_button", post:  post %>
-        <% end %>
-      <% end %>
     </li>
   <% end %>
 
 <% if current_user.admin? %>
-  <h3>Spam</h3>
-  </ul>
-    <% @spam.each do |spam| %>
-      <li> 
-        <%= spam.title %>
-        <%= button_to "Delete this Spam", spam, method: :delete %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render 'admin_delete_spam' %>
 <% end %>
