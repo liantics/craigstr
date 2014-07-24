@@ -8,4 +8,7 @@ class Location < ActiveRecord::Base
   def featured_categories
     categories.limit(MAX_CATEGORIES_DISPLAYED)
   end 
+
+  def sort_alphabetically
+  end
 end
