@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     admin? || post_owner?(post)
   end
 
+  private
+
   def post_owner?(post)
    post.user_id == id
   end
