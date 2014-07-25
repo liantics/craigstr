@@ -6,6 +6,9 @@
   border-radius: 20px;
   padding: 20px;
 }
+.main-dashboard div {
+  color: white
+}
 
 .left-container {
   @include span-columns(4);
