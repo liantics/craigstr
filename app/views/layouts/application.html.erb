@@ -29,13 +29,13 @@
         <% if signed_in? %>
           <div><%= link_to "My Posts", current_user %></div>
         <% end %>
-        <div><%= link_to "Locations", :locations %></div>
+        <div><%= link_to "See All Locations", :locations %></div>
         <div><%= link_to "All Posts", :posts %></div>
         <div class="search">
-          <%= form_tag posts, method: :get do %>
-            <%= label_tag :search, "Search for a posts" %>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Find it!" %>
+          <%= form_tag("/search", method: "get") do %>
+            <%= label_tag(:search, "Search All Posts:") %>
+            <%= text_field_tag(:search) %>
+            <%= submit_tag "Search", :name => nil %>
           <% end %>
         </div>
       </div>
