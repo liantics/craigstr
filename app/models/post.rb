@@ -9,15 +9,12 @@ class Post < ActiveRecord::Base
   belongs_to :location
   belongs_to :category
 
-  has_many :post_categories
-  has_many :categories, through: :post_categories
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
-  
   def self.search(search)
-    search_condition = "%" + search + "%"
-    find(:all, :conditions => ["title LIKE ? OR description LIKE ?", search_condition, search_condition])
+    if search
+      find(:all, :conditions => ["title LIKE ?", "%#{search}%"])
+    else
+      puts "No results found"
+    end
   end
 
   def self.order_by_time
@@ -28,4 +25,6 @@ class Post < ActiveRecord::Base
     where(spam: true)
   end
 
+  has_many :post_categories
+  has_many :categories, through: :post_categories
 end
