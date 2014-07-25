@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :require_login, only: [:create, :edit, :update]
 
   def index
-    @posts = Post.order_by_time.page(params[:page])
+    @posts = Post.search(params[:search]) 
+    @spam = Post.where(spam: true)
     @locations = Location.all
   end
 
