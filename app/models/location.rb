@@ -12,4 +12,8 @@ class Location < ActiveRecord::Base
   def self.display_format
     order(:name)
   end
+
+  def capitalize_name
+    name.capitalize
+  end
 end
