@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     order("created_at DESC")
   end
 
-  def spam
+  def self.spam
     where(spam: true)
   end
 

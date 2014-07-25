@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.order(:name)
     @location = Location.new
-    @spam = Post.where(spam: true)
+    @spam = Post.spam
   end
 
   def show
