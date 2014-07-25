@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
   def create
     @location = Location.find(params[:location_id])
     @category = @location.categories.new(category_params)
+    @category.name = @category.name.capitalize
     if @category.save
       redirect_to @location
     else
