@@ -31,6 +31,12 @@
         <% end %>
         <div><%= link_to "Locations", :locations %></div>
         <div><%= link_to "All Posts", :posts %></div>
+        <div class="search">
+          <%= form_tag "/search", method: :get do %>
+            <%= label_tag :search_posts, "Search for a posts" %>
+            <%= text_field_tag :search_posts, "", placeholder: "Enter text" %>
+            <%= submit_tag :submit, as: "Find it!" %>
+          <% end %>
       </div>
       <%= content_for :left_container %>
     </div>
