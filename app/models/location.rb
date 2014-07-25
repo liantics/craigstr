@@ -9,7 +9,7 @@ class Location < ActiveRecord::Base
     categories.limit(MAX_CATEGORIES_DISPLAYED)
   end 
 
-  def self.display_format
+  def self.alphabetical
     order(:name)
   end
 end
