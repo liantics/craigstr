@@ -1,3 +1,12 @@
+<% if signed_in? %>
+  <% content_for :left_container  do %>
+    <div class="new-post-dash">
+      <h2> Creat a new Post </h2>
+      <div><%= render "create_post" %></div>
+    </div>
+  <% end %>
+<% end %>
+
 <h2>Posts in <%= @location.name %></h2>
 <ul>
   <% @posts.each do |post| %>
@@ -15,7 +24,3 @@
     </li>
   <% end %>
 </ul>
-<% if signed_in? %>
-  <h2>Add a Post</h2>
-  <%= render "create_post" %>
-<% end %>

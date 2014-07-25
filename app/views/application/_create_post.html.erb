@@ -1,10 +1,6 @@
 <%= form_for [@location, @post] do |form| %>
   <%= render "error_messages", target: @post %>
   <div>
-    <p>Assign your post to a category</p>
-    <%= form.collection_check_boxes(:category_ids, @location.categories, :id, :name) %>
-  <div>
-  <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -15,6 +11,10 @@
   <div>
     <%= form.label :price %>
     <%= form.text_field :price %>
+  </div>
+  <div>
+    <p class="form-label">Assign categories</p>
+    <%= form.collection_check_boxes(:category_ids, @location.categories, :id, :name) %>
   </div>
   <div>
     <%= form.submit %>
