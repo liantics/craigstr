@@ -13,7 +13,7 @@
 <% end %>
 
 <ul>
-  <% @locations.display_format.each do |location| %>
+  <% @locations.alphabetical.each do |location| %>
     <li class="location-list">
       <%= link_to location.name, location %>
       <ul>
