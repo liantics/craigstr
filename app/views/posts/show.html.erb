@@ -10,7 +10,7 @@
 </div>
 <div>
   <% if signed_in? %>
-    <% if ! @post.spam %>
+    <% if ! @post.spam? %>
       <%= render "report_spam_button", post: @post %>
     <% end %>
   <% end %>
