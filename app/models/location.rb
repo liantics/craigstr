@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
 
   has_many :categories
   has_many :posts
+  has_many :images, through: :posts
 
   def featured_categories
     categories.limit(MAX_CATEGORIES_DISPLAYED)

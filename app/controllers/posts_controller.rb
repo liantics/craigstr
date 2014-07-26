@@ -65,6 +65,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :price,
+      :image_url,
       category_ids: [],
     )
   end
