@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:id])
+    location_id = @post.location.id
+    @location = Location.find(location_id)
   end
 
   def create
