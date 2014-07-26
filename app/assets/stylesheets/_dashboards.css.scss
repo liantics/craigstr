@@ -6,6 +6,7 @@
   border-radius: 20px;
   padding: 20px;
 }
+
 .main-dashboard div {
   color: white
 }
@@ -32,4 +33,22 @@
   border-radius: 20px;
   padding: 20px;
   margin: 10px;
+}
+
+.post_content_box {
+  float: left;
+}
+
+.photo_box {
+  clear: both;
+  float: right;
+}
+
+.photo_box h2 {
+  align:left;
+}
+
+.photo_box img {
+  max-width: 70%;
+  align: center;
 }

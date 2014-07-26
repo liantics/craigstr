@@ -1,12 +1,5 @@
-<%= form_for @post do |form| %>
+<%= form_for [@post] do |form| %>
   <%= render "error_messages", target: @post %>
-  <div>
-    <p>Assign your post to a category</p>
-    <%= form.collection_check_boxes(:category_ids, @categories, :id, :name) %>
-    <% if current_user.admin? %>
-      <p>Don't see a category you like? <%= link_to "Create category", [:new, :category] %></p>
-    <% end %>
-  <div>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -16,9 +9,14 @@
     <%= form.text_area :body %>
   </div>
   <div>
-    <%= form.label :remote_url, "Image url"  %>
-    <%= form.text_field :remote_url  %>
+    <%= form.label :price %>
+    <%= form.text_field :price %>
   </div>
-    <%= form.submit  %>
+  <div>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+  <div>
+    <%= form.submit %>
   </div>
 <% end %>

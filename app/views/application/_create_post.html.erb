@@ -13,7 +13,11 @@
     <%= form.text_field :price %>
   </div>
   <div>
-    <p class="form-label">Assign categories</p>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+  <div>
+    <p class="form-label">Ad categories</p>
     <%= form.collection_check_boxes(:category_ids, @location.categories, :id, :name) %>
   </div>
   <div>
