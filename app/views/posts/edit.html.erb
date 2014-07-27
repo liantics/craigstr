@@ -1,5 +1,4 @@
 <h2>Current Post</h2>
-
 <div>
   <%= @post.title %>
 </div>
@@ -15,9 +14,6 @@
 
 <% if signed_in? %>
   <h2>Edit  Post</h2>
-  
   <div><%= render "edit_post" %></div>
-  
   <%= button_to "Delete Post", @post, method: :delete %>
-
 <% end %>

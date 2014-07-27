@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order_by_time.page(params[:page])
     @locations = Location.all.order(:name)
-    @spam = Post.where(spam: true)
   end
 
   def show
