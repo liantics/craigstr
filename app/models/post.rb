@@ -22,4 +22,5 @@ class Post < ActiveRecord::Base
   def self.spam
     where(spam: true)
   end
+
 end

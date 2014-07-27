@@ -16,7 +16,7 @@
 <% if signed_in? %>
   <h2>Edit  Post</h2>
   
-  <div><%= render "form" %></div>
+  <div><%= render "edit_post" %></div>
   
   <%= button_to "Delete Post", @post, method: :delete %>
 
