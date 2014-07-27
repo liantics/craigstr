@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order_by_time.page(params[:page])
-    @locations = Location.all
+    @locations = Location.all.order(:name)
   end
 
   def show
