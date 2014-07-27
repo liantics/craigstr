@@ -14,9 +14,6 @@
   <% end %>
 </ul>
 <h2> Catagories in <%= @location.name %> </h2>
-  <% if current_user.admin? %>
-    <div> <%= link_to "Create category", [:new, @location, :category] %></div>
-  <% end %>
 <ul>
   <% @location.categories.each do |category| %>
     <li>
@@ -24,3 +21,8 @@
     </li>
   <% end %>
 </ul>
+ <% if current_user.admin? %>
+    <div class="admin_section"><h3>Administration</h3>
+      <%= button_to "Create category", [:new, @location, :category], method: :get %>
+    </div>
+  <% end %>
