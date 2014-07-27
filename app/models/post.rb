@@ -9,6 +9,9 @@ class Post < ActiveRecord::Base
   belongs_to :location
   belongs_to :category
 
+  has_many :post_categories
+  has_many :categories, through: :post_categories
+
   def self.search(search)
     if search
       find(:all, :conditions => ["title LIKE ?", "%#{search}%"])
@@ -24,10 +27,4 @@ class Post < ActiveRecord::Base
   def self.spam
     where(spam: true)
   end
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
 end

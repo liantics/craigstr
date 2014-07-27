@@ -1,17 +1,3 @@
-<% if current_user.admin? %>
-  <h3>Add a location</h3>
-  <%= form_for @location do |form| %>
-    <%= render "error_messages", target: @location %>
-    <div>
-      <%= form.label :name, "Location" %>
-      <%= form.text_field :name %>
-    </div>
-    <div>
-      <%= form.submit "Add Location" %>
-    </div>
-  <% end %>
-<% end %>
-
 <ul>
   <% @locations.alphabetical.each do |location| %>
     <li class="location-list">
@@ -22,8 +8,42 @@
         <% end %>
       </ul>
     </li>
+  </ul>z
   <% end %>
 
 <% if current_user.admin? %>
-  <%= render 'admin_delete_spam' %>
+  <div class="admin_section">
+    <h2>Administration</h2>
+    <h3>Add a Location</h3>
+    <%= form_for @location do |form| %>
+      <%= render "error_messages", target: @location %>
+      <div>
+        <%= form.label :name, "Location" %>
+        <%= form.text_field :name %>
+      </div>
+      <div>
+        <%= form.submit "Add Location" %>
+      </div>
+    <% end %>
+
+    <%= render 'admin_delete_spam' %>
+  </div>
+<% end %>
+
+<% if signed_in? %>
+  <% content_for :left_container  do %>
+    <div class="new-post-dash">
+      <h2> Post an Ad </h2>
+        <p class="form-label">Locations</p>
+          <%= collection_select(
+            :location,
+            :id, 
+            @locations, 
+            :id, 
+            :name, 
+            selected: 1
+          ) %>
+        <a id="choose_location" href="">Choose Location</a>
+    </div>   
+  <% end %>
 <% end %>
