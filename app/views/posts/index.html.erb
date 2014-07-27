@@ -11,7 +11,7 @@
 <ul>
   <% @locations.each do |location| %>
     <li>
-      <%= link_to location.name, location %>
+      <h2><%= location.name %></h2>
       <ul>
         <% location.featured_categories.each do |category| %>
           <li><%= link_to category.name, [location, @category] %></li>
