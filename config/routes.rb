@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resource :spam, only: [:create]
     resources :images, only: [:new, :create]
   end
-  
 
   resources :locations, only: [:new, :create, :index, :show] do
     resources :categories, only: [:show, :new, :create, :index]
