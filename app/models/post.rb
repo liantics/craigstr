@@ -9,6 +9,9 @@ class Post < ActiveRecord::Base
   belongs_to :location
   belongs_to :category
 
+  has_many :post_categories
+  has_many :categories, through: :post_categories
+
   def self.order_by_time
     order("created_at DESC")
   end
@@ -16,7 +19,4 @@ class Post < ActiveRecord::Base
   def self.spam
     where(spam: true)
   end
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
 end

@@ -1,7 +1,6 @@
 class SearchesController < ApplicationController
   def show
-    @posts = run_search
-    @found_results = @posts
+    @found_results= run_search
   end
 
   private

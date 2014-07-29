@@ -3,8 +3,8 @@
     <h3 class="label">No results found.</h3>
   <% else %>
     <ul>
-    <% @posts.each do |post| %>
-    <li><%= link_to  post.title %></li>
+    <% @found_results.each do |found_result| %>
+    <li><%= link_to  found_result.title %></li>
     <% end %>
     </ul>
   <% end %>
