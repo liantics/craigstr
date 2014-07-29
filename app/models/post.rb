@@ -9,14 +9,6 @@ class Post < ActiveRecord::Base
   belongs_to :location
   belongs_to :category
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ["title LIKE ?", "%#{search}%"])
-    else
-      puts "No results found"
-    end
-  end
-
   def self.order_by_time
     order("created_at DESC")
   end
