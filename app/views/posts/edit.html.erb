@@ -1,5 +1,4 @@
 <h2>Current Post</h2>
-
 <div>
   <%= @post.title %>
 </div>
@@ -15,30 +14,6 @@
 
 <% if signed_in? %>
   <h2>Edit  Post</h2>
-  
-  <%= form_for @post do |form| %>
-      <%= render "error_messages", target: @post %>
-    <div>
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
-    <div>
-      <%= form.label :body %>
-      <%= form.text_area :body %>
-    </div>
-    <div>
-      <%= form.label :price %>
-      <%= form.text_field :price %>
-    </div>
-    <div>
-      <%= form.label :location %>
-      <%= form.collection_select :id, @locations, :id, :name %>
-    </div>
-    <div>
-      <%= form.submit "Update Post" %>
-    </div>
-  <% end %>
-  
+  <div><%= render "edit_post" %></div>
   <%= button_to "Delete Post", @post, method: :delete %>
-
 <% end %>

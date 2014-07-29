@@ -3,12 +3,14 @@ class PostsController < ApplicationController
 
   def index
     @spam = Post.where(spam: true)
-    @locations = Location.all
+    @posts = Post.order_by_time.page(params[:page])
+    @locations = Location.order(:name)
   end
 
   def show
     @user = current_user
     @post = Post.find(params[:id])
+    @location = @post.location 
   end
 
   def create
@@ -65,6 +67,7 @@ class PostsController < ApplicationController
       :title,
       :body,
       :price,
+      :image_url,
       category_ids: [],
     )
   end

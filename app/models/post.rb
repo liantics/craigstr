@@ -9,13 +9,8 @@ class Post < ActiveRecord::Base
   belongs_to :location
   belongs_to :category
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ["title LIKE ?", "%#{search}%"])
-    else
-      puts "No results found"
-    end
-  end
+  has_many :post_categories
+  has_many :categories, through: :post_categories
 
   def self.order_by_time
     order("created_at DESC")
@@ -24,10 +19,4 @@ class Post < ActiveRecord::Base
   def self.spam
     where(spam: true)
   end
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
-
-  has_many :post_categories
-  has_many :categories, through: :post_categories
 end

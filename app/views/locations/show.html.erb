@@ -1,22 +1,19 @@
 <% if signed_in? %>
   <% content_for :left_container  do %>
     <div class="new-post-dash">
-      <h2> Creat a new Post </h2>
+      <h2> Post an Ad </h2>
       <div><%= render "create_post" %></div>
     </div>
   <% end %>
 <% end %>
 
-<h2>Posts in <%= @location.name %></h2>
+<h2>Ads in <%= @location.name %></h2>
 <ul>
   <% @posts.each do |post| %>
     <li><%= link_to post.title, post %></li>
   <% end %>
 </ul>
 <h2> Catagories in <%= @location.name %> </h2>
-  <% if current_user.admin? %>
-    <div> <%= link_to "Create category", [:new, @location, :category] %></div>
-  <% end %>
 <ul>
   <% @location.categories.each do |category| %>
     <li>
@@ -24,3 +21,8 @@
     </li>
   <% end %>
 </ul>
+ <% if current_user.admin? %>
+    <div class="admin_section"><h3>Administration</h3>
+      <%= button_to "Create category", [:new, @location, :category], method: :get %>
+    </div>
+  <% end %>

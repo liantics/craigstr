@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :update, :destroy, :show, :edit] do
     resource :spam, only: [:create]
+    resources :images, only: [:new, :create]
   end
 
   resources :locations, only: [:new, :create, :index, :show] do

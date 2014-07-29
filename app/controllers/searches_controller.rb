@@ -1,5 +1,11 @@
 class SearchesController < ApplicationController
   def show
-    @posts_search_results = Post.where("title ILIKE :search OR body ILIKE :search", search: "%#{params[:search]}%")
+    @found_results= run_search
+  end
+
+  private
+  
+  def run_search
+    Post.where("title ILIKE :search OR body ILIKE :search", search: "%#{params[:search]}%")
   end
 end

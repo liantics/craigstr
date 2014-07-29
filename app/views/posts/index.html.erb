@@ -1,0 +1,21 @@
+<% if signed_in? %>
+  <% content_for :left_container  do %>
+    <div class="new-post-dash">
+      <h2> Post an Ad </h2>
+      <%= link_to "Go to locations page", :locations %>
+    </div>
+  <% end %>
+<% end %>
+
+<ul>
+  <% @locations.each do |location| %>
+    <li>
+      <h2><%= location.name %></h2>
+      <ul>
+        <% location.featured_categories.each do |category| %>
+          <li><%= link_to category.name, [location, @category] %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

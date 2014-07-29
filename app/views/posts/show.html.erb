@@ -1,25 +1,34 @@
-<h2><%= @post.title %></h2>
-<div>
-  Description: <%= @post.body %> 
-</div>
-<div>
-  Price: $<%= @post.price %> 
-</div>
-<div>
-  Location: <%= @post.location.name %> 
-</div>
-<div>
-  <% if signed_in? %>
-    <% if ! @post.spam? %>
-      <%= render "report_spam_button", post: @post %>
+<div class="post_content_box">
+  <h2><%= @post.title %></h2>
+  <div>
+    Description: <%= @post.body %> 
+  </div>
+  <div>
+    Price: $<%= @post.price %> 
+  </div>
+  <div>
+    Location: <%= @post.location.name %>
+  </div>
+  <div>
+    <% if signed_in? %>
+      <% if ! @post.spam? %>
+        <%= render "report_spam_button", post: @post %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% if current_user.admin? %>
-    <%= button_to "Delete Post", :post, method: :delete %>
-  <% end %>
+    <% if @post.user_id == @user.id %>
+      <%= button_to "Edit", [:edit, @post], method: :get %>
+    <% end %>
 
-  <% if @post.user_id == @user.id %>
-    <%= button_to "Edit", [:edit, @post], method: :get %>
-  <% end %>
+    <div class="delete_button">
+      <% if current_user.admin? %>
+        <a name="spam_admin">
+        <%= button_to "Delete Post", :post, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="photo_box">
+  <h2>Photo</h2>
+  <img src="<%= @post.image_url %>" >
 </div>

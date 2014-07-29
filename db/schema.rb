@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723193116) do
+ActiveRecord::Schema.define(version: 20140726112501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140723193116) do
     t.integer  "location_id",                                         null: false
     t.decimal  "price",       precision: 7, scale: 2, default: 0.0,   null: false
     t.boolean  "spam",                                default: false
+    t.string   "image_url",                           default: "",    null: false
   end
 
   add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree

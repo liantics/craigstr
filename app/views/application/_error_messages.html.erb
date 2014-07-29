@@ -1,8 +1,13 @@
-<% if target.errors.any? %>
-  <h2><%= pluralize target.errors.count, "error" %> prevented this form from saving: </h2>
-  <ul>
-    <% target.errors.full_messages.each do |message| %>
-      <li><%= message %> </li>
-    <%end%>
-  </ul>
-<% end %>
+<div>
+  <% if target.errors.any? %>
+    <h3>
+      <%= pluralize target.errors.count, "error" %> 
+      prevented this form from saving: 
+    </h3>
+    <ul>
+      <% target.errors.full_messages.each do |message| %>
+        <li class="error_text"><h3><%= message %></h3></li>
+      <%end%> 
+    </ul>
+  <% end %>
+</div>
