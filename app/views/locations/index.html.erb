@@ -33,7 +33,7 @@
 <% if signed_in? %>
   <% content_for :left_container  do %>
     <div class="new-post-dash">
-      <h2> Post an Ad </h2>
+      <h2>Post an Ad</h2>
         <p class="form-label">Locations</p>
           <%= collection_select(
             :location,
@@ -41,7 +41,7 @@
             @locations, 
             :id, 
             :name, 
-            selected: 1
+            include_blank: "choose..." 
           ) %>
         <a id="choose_location" href="">Choose Location</a>
     </div>   
