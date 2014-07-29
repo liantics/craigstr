@@ -11,14 +11,6 @@ class Post < ActiveRecord::Base
 
   has_many :post_categories
   has_many :categories, through: :post_categories
-  
-  def self.search(search)
-    if search
-      find(:all, :conditions => ["title LIKE ?", "%#{search}%"])
-    else
-      puts "No results found"
-    end
-  end
 
   def self.order_by_time
     order("created_at DESC")

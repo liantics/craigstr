@@ -1,5 +1,10 @@
-<h3>Search results</h3>
-<ul>
-<% @posts_search_results.each do |post| %>
-  <li><%= post.title %></li>
-<% end %>
+<h2>Search Results</h2>
+  <% if @found_results.empty? %>
+    <h3 class="label">No results found.</h3>
+  <% else %>
+    <ul>
+    <% @posts.each do |post| %>
+    <li><%= link_to  post.title %></li>
+    <% end %>
+    </ul>
+  <% end %>
