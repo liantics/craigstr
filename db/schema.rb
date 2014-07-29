@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140726112501) do
     t.integer  "location_id",                                         null: false
     t.decimal  "price",       precision: 7, scale: 2, default: 0.0,   null: false
     t.boolean  "spam",                                default: false
-    t.string   "image_url"
+    t.string   "image_url",                           default: "",    null: false
   end
 
   add_index "posts", ["location_id"], name: "index_posts_on_location_id", using: :btree
