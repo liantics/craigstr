@@ -13,3 +13,4 @@ gem 'kaminari'
 gem 'neat'
 gem 'bitters'
 gem 'bourbon'
+gem 'rails_12factor', group: :production
